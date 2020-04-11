@@ -47,7 +47,7 @@ end
 
 def quote(args, quote, x, y)
   if args.state.chars_printed == quote.length
-    args.outputs.labels << [x, y, quote, 0, 1, 255, 255, 255]
+    args.outputs.labels << [x, y, quote, 2, 1, 255, 255, 255]
     if !args.inputs.keyboard.truthy_keys.empty?
       args.state.levels.initial_dialog.dialog = args.state.levels.initial_dialog.dialog + 1
       args.state.chars_printed = 0
@@ -63,7 +63,8 @@ def initial_cutscene(args)
   args.state.levels.cutscene.background ||= 0
   args.state.ticks_snapshot ||= args.state.tick_count
   if args.state.levels.cutscene.background == 0
-    args.outputs.sprites << args.outputs.sprites << [0, 0, 1280, 720, "sprites/sky_0.jfif", 0, (args.state.tick_count - args.state.ticks_snapshot) + 50]
+    args.outputs.solids << [0, 0, 1280, 720, 0, 0, 0]
+    args.outputs.sprites << args.outputs.sprites << [0, 0, 1280, 720, "sprites/sky_0.jfif", 0, args.state.tick_count - args.state.ticks_snapshot]
     if ((args.state.tick_count - args.state.ticks_snapshot) + 50) == 255
       args.state.levels.cutscene.background = 1
       args.state.ticks_snapshot = nil
