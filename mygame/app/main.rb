@@ -56,14 +56,14 @@ def load_initial_cutscene(args)
   args.state.tick_snapshot ||= args.state.tick_count
   if args.state.background == 0
     args.outputs.solids << [0, 0, 1280, 720, 0, 0, 0]
-    args.outputs.sprites << args.outputs.sprites << [0, 0, 1280, 720, "sprites/sky_0.jfif", 0, args.state.tick_count - args.state.tick_snapshot]
+    args.outputs.sprites << args.outputs.sprites << [0, 0, 1280, 720, "sprites/sky_0.jpeg", 0, args.state.tick_count - args.state.tick_snapshot]
     if args.state.tick_count - args.state.tick_snapshot == 255
       args.state.background = 1
       args.state.tick_snapshot = nil
     end
   elsif args.state.background == 1
-    args.outputs.sprites << [0, 0 - (args.state.tick_count - args.state.tick_snapshot), 1280, 720, "sprites/sky_0.jfif", 0]
-    args.outputs.sprites << [0, 720 - (args.state.tick_count - args.state.tick_snapshot), 1280, 720, "sprites/sky_1.jfif", 0]
+    args.outputs.sprites << [0, 0 - (args.state.tick_count - args.state.tick_snapshot), 1280, 720, "sprites/sky_0.jpeg", 0]
+    args.outputs.sprites << [0, 720 - (args.state.tick_count - args.state.tick_snapshot), 1280, 720, "sprites/sky_1.jpeg", 0]
     if args.state.tick_count - args.state.tick_snapshot < 240
       dialog_box(args, "It was early summer and the night was nice and warm...", 1280 / 2, 720 / 9)
       return
@@ -79,15 +79,15 @@ def load_initial_cutscene(args)
     end
   elsif args.state.background == 2
     if args.state.tick_count - args.state.tick_snapshot < 60
-      args.outputs.sprites << [0, 0, 1280, 720, "sprites/sky_2.jfif", 0]
+      args.outputs.sprites << [0, 0, 1280, 720, "sprites/sky_2.jpeg", 0]
       dialog_box(args, "A bright moving spot in the sky!", 1280 / 2, 720 / 9)
       return
     elsif args.state.tick_count - args.state.tick_snapshot < 120
-      args.outputs.sprites << [0, 0, 1280, 720, "sprites/sky_3.jfif", 0]
+      args.outputs.sprites << [0, 0, 1280, 720, "sprites/sky_3.jpeg", 0]
       dialog_box(args, "A bright moving spot in the sky!", 1280 / 2, 720 / 9)
       return
     elsif args.state.tick_count - args.state.tick_snapshot < 240
-      args.outputs.sprites << [0, 0, 1280, 720, "sprites/sky_2.jfif", 0]
+      args.outputs.sprites << [0, 0, 1280, 720, "sprites/sky_2.jpeg", 0]
       dialog_box(args, "A bright moving spot in the sky!", 1280 / 2, 720 / 9)
       return
     else
@@ -96,7 +96,7 @@ def load_initial_cutscene(args)
     end
   elsif args.state.background == 3
     args.state.frame ||= 4
-    args.outputs.sprites << [0, 0, 1280, 720, "sprites/sky_#{args.state.frame}.jfif", 0]
+    args.outputs.sprites << [0, 0, 1280, 720, "sprites/sky_#{args.state.frame}.jpeg", 0]
     if args.state.frame < 7
       dialog_box(args, "It started getting closer and closer...", 1280 / 2, 720 / 9)
     else
